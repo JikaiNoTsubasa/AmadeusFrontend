@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { DataService } from '../services/DataService';
+import { AmaService } from '../services/AmaService';
+import { Unit } from '../Models/Unit';
 
 @Component({
   selector: 'app-sidemenu',
@@ -12,7 +13,7 @@ import { DataService } from '../services/DataService';
 })
 export class SidemenuComponent {
 
-  constructor(private dataService: DataService) { }
+  constructor(private amaService: AmaService) { }
 
   appName = "Amadeus";
   @ViewChild('mysidenav')
@@ -22,7 +23,27 @@ export class SidemenuComponent {
 
   selectedUnit = null;
 
+  units: Unit[] = [];
+
   sidebarOpened = true;
+
+  ngOnInit(){
+    this.getAllUnits();
+  }
+
+  getAllUnits(){
+    this.amaService.getAllUnits().subscribe({
+      next:(data) => {
+        this.units = data;
+        }, 
+      error:(error)=>{
+        console.log(error);
+        },
+      complete:() => {
+        console.log('complete');
+        }
+  });
+  }
 
   openNav(){
     this.sidenav.nativeElement.style.width = "250px";

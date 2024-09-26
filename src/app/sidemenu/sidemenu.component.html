@@ -1,10 +1,11 @@
 <div class="sidenav" #mysidenav>
     <!-- https://fonts.google.com/icons?icon.set=Material+Icons&icon.style=Filled&selected=Material+Icons:home:&icon.size=24&icon.color=%23e8eaed -->
     <span class="navTitle">{{ appName }}</span>
-    <a href="#"><mat-icon class="icoSmall">home</mat-icon>About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <span *ngFor="let unit of units">
+        <a href="#{{ unit.id}}">{{ unit.name }}</a>
+    </span>
+    <!--<a href="#"><mat-icon class="icoSmall">home</mat-icon>About</a>-->
+    
   </div>
 
 <div class="mymain" #mymain>
