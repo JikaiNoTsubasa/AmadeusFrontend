@@ -2,7 +2,7 @@
     <!-- https://fonts.google.com/icons?icon.set=Material+Icons&icon.style=Filled&selected=Material+Icons:home:&icon.size=24&icon.color=%23e8eaed -->
     <span class="navTitle">{{ appName }}</span>
     <span *ngFor="let unit of units">
-        <a href="#{{ unit.id}}">{{ unit.name }}</a>
+        <a (click)="onClickUnit(unit)">{{ unit.name }}</a>
     </span>
     <!--<a href="#"><mat-icon class="icoSmall">home</mat-icon>About</a>-->
     
@@ -16,7 +16,7 @@
         <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
     </div>
     <ng-template #displayUnit>
-        Test
+        <app-project [unit]="selectedUnit"></app-project>
     </ng-template>
 </div>
   

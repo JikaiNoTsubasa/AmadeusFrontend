@@ -1,19 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AmaService } from '../services/AmaService';
 import { Unit } from '../Models/Unit';
+import { AuthService } from '../auth/auth.service';
+import { Router, RouterModule } from '@angular/router';
+import { ProjectComponent } from "../pages/project/project.component";
 
 @Component({
   selector: 'app-sidemenu',
   standalone: true,
-  imports: [MatIconModule, CommonModule],
+  imports: [MatIconModule, CommonModule, RouterModule, ProjectComponent],
   templateUrl: './sidemenu.component.html',
   styleUrl: './sidemenu.component.scss'
 })
 export class SidemenuComponent {
 
-  constructor(private amaService: AmaService) { }
+  amaService = inject(AmaService);
+  authService = inject(AuthService);
+  router = inject(Router);
 
   appName = "Amadeus";
   @ViewChild('mysidenav')
@@ -21,7 +26,7 @@ export class SidemenuComponent {
   @ViewChild('mymain') 
   mainref : ElementRef;
 
-  selectedUnit = null;
+  selectedUnit : Unit = null;
 
   units: Unit[] = [];
 
@@ -40,7 +45,7 @@ export class SidemenuComponent {
         console.log(error);
         },
       complete:() => {
-        console.log('complete');
+        //console.log('complete');
         }
   });
   }
@@ -58,12 +63,16 @@ export class SidemenuComponent {
   toggleNav() {
     if (this.sidebarOpened){
       this.closeNav();
-      console.log("closing");
+      //console.log("closing");
       this.sidebarOpened = false;
     }else{
       this.openNav();
-      console.log("opening");
+      //console.log("opening");
       this.sidebarOpened = true;
     }
+  }
+
+  onClickUnit(unit: Unit){
+    this.selectedUnit = unit;
   }
 }

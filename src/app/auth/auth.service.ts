@@ -16,7 +16,6 @@ export class AuthService {
   login(data: any) {
     return this.httpClient.post(`${this.baseUrl}/login`, data)
       .pipe(tap((result) => {
-        //console.log(JSON.stringify(result));
         sessionStorage.setItem('authUser', JSON.stringify(result));
       }));
   }
