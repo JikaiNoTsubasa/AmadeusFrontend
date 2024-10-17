@@ -1,1 +1,9 @@
-<h1>Unit: {{ unit?.name }}</h1>
+<!--<h1>Unit: {{ unit?.name }}</h1>-->
+<div *ngIf="loading">
+    <img src="spinner.gif" />
+</div>
+
+<div *ngIf="selectedUnit != null">
+    <h2>Sidenav Push Example</h2>
+    <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+</div>
