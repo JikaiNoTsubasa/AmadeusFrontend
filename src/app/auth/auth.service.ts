@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
 
   httpClient = inject(HttpClient);
-  baseUrl = 'http://localhost:5008/auth';
+  baseUrl = 'http://localhost:8899/auth';
 
   constructor() { }
 
