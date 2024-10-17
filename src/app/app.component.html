@@ -2,7 +2,8 @@
 <!--<app-sidemenu></app-sidemenu>-->
 <div class="sidenav" #mysidenav>
     <!-- https://fonts.google.com/icons?icon.set=Material+Icons&icon.style=Filled&selected=Material+Icons:home:&icon.size=24&icon.color=%23e8eaed -->
-    <span class="navTitle">{{ appName }}</span>
+    <div class="title-wrap"><img src="amadeus.png" class="navLogo"><span class="navTitle">{{ appName }}</span></div>
+    <span class="vertical-spacer"></span>
     <app-sidemenu></app-sidemenu>
     <!--
     <span *ngFor="let unit of units">

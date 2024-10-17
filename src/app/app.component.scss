@@ -54,11 +54,12 @@ mat-sidenav-content{
 
 .navTitle {
     padding-left: 20px;
-    padding-bottom: 40px;
+    /*padding-bottom: 40px;*/
+    vertical-align: middle;
     text-decoration: none;
     font-size: 25px;
     color: #D4D4D4;
-    display: block;
+    display: inline-block;
     transition: 0.3s;
     font-weight: bold;
 }
@@ -116,4 +117,20 @@ mat-sidenav-content{
 .navtop .ico{
     line-height: 20px;
     vertical-align: middle;
+}
+
+.navLogo {
+    height: 50px;
+    width: 50px;
+}
+
+.vertical-spacer {
+    display: block;
+    margin-bottom: 40px;
+}
+
+.title-wrap {
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }

@@ -3,11 +3,12 @@ import { Unit } from '../../Models/Unit';
 import { AmaService } from '../../services/AmaService';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { StatusColorPipe } from "../../pipe/status-color.pipe";
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, StatusColorPipe],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'
 })

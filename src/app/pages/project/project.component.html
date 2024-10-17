@@ -4,6 +4,10 @@
 </div>
 
 <div *ngIf="selectedUnit != null">
-    <h2>Sidenav Push Example</h2>
+    <h2>{{selectedUnit.name}}</h2>
+    <span class="date-creation">{{selectedUnit.creationDate | date:'dd/MM/yyyy'}}</span><br/>
+    <span class="{{selectedUnit.status.name | statusColor}}">{{selectedUnit.status.name}}</span>
+    <br/><br/>
+    <span class="break-line"></span>
     <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
 </div>

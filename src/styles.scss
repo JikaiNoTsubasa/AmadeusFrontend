@@ -12,3 +12,51 @@ body{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.date-creation {
+    font-size: 12px;
+    color: rgba($color: #4D4D4F, $alpha: 0.8);
+    display: inline-block;
+}
+
+.chip{
+    height: 25px;
+    line-height: 25px;
+    padding: 0px 20px;
+    border-radius: 13px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.chip-basic {
+    color: #F98A90;
+    background-color: rgba($color: #F98A90, $alpha: 0.1);
+}
+
+.chip-created {
+    color: #4D4D4F;
+    background-color: rgba($color: #4D4D4F, $alpha: 0.1);
+}
+
+.chip-ongoing {
+    color: #3AF4D6;
+    background-color: rgba($color: #3AF4D6, $alpha: 0.1);
+}
+
+.chip-closed {
+    color: #561878;
+    background-color: rgba($color: #561878, $alpha: 0.1);
+}
+
+.chip-pink {
+    color: #F98A90;
+    background-color: rgba($color: #F98A90, $alpha: 0.1);
+}
+
+.break-line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #FF7400;
+    margin-bottom: 20px;
+}
