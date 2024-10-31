@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
 }
 
@@ -49,3 +49,11 @@
     font-size: 26px;
     font-weight: bold;
 }
+    */
+
+.main-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }

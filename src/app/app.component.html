@@ -1,29 +1,18 @@
 
-<!--<app-sidemenu></app-sidemenu>-->
+<router-outlet />
+<!--
 <div class="sidenav" #mysidenav>
-    <!-- https://fonts.google.com/icons?icon.set=Material+Icons&icon.style=Filled&selected=Material+Icons:home:&icon.size=24&icon.color=%23e8eaed -->
+     https://fonts.google.com/icons?icon.set=Material+Icons&icon.style=Filled&selected=Material+Icons:home:&icon.size=24&icon.color=%23e8eaed 
     <div class="title-wrap"><img src="amadeus.png" class="navLogo"><span class="navTitle">{{ appName }}</span></div>
     <span class="vertical-spacer"></span>
     <app-sidemenu></app-sidemenu>
-    <!--
-    <span *ngFor="let unit of units">
-        <a (click)="onClickUnit(unit)">{{ unit.name }}</a>
-    </span>
-    <a href="#"><mat-icon class="icoSmall">home</mat-icon>About</a>-->
+
     
   </div>
 
 <div class="mymain" #mymain>
-    <span class="navtop" (click)="toggleNav()"><!--&#9776;--><mat-icon class="ico">menu_open</mat-icon> Menu</span>
-    <router-outlet />
-    <!--
-    <div *ngIf="selectedUnit == null; else displayUnit">
-        <h2>Sidenav Push Example</h2>
-        <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
-    </div>
-    <ng-template #displayUnit>
-        <app-project [unit]="selectedUnit"></app-project>
-    </ng-template>
--->
+    <span class="navtop" (click)="toggleNav()">&#9776;<mat-icon class="ico">menu_open</mat-icon> Menu</span>
+    
+    
 </div>
-  
+-->
