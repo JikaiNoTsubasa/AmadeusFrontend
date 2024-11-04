@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { AmaService } from '../services/AmaService';
 import { Unit } from '../Models/Unit';
 import { AuthService } from '../auth/auth.service';
@@ -10,7 +9,7 @@ import { ProjectComponent } from "../pages/project/project.component";
 @Component({
   selector: 'app-sidemenu',
   standalone: true,
-  imports: [MatIconModule, CommonModule, RouterModule, ProjectComponent],
+  imports: [ CommonModule, RouterModule, ProjectComponent],
   templateUrl: './sidemenu.component.html',
   styleUrl: './sidemenu.component.scss'
 })

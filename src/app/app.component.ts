@@ -1,12 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidemenuComponent, MatIconModule],//, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, BrowserModule, BrowserAnimationsModule, MatListModule],
+  imports: [RouterOutlet, SidemenuComponent],//, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, BrowserModule, BrowserAnimationsModule, MatListModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
