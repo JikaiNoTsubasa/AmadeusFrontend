@@ -5,13 +5,14 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidemenuComponent],//, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, BrowserModule, BrowserAnimationsModule, MatListModule],
+  imports: [RouterOutlet, SidemenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Amadeus';
 
+  /*
   appName = "Amadeus";
   @ViewChild('mysidenav')
   public sidenav: ElementRef;
@@ -41,4 +42,5 @@ export class AppComponent {
       this.sidebarOpened = true;
     }
   }
+    */
 }

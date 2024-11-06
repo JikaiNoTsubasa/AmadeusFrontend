@@ -1,9 +1,10 @@
+/*
 h1 {
     padding: 0 1rem;
 }
 
 h2 {padding: 1rem;}
-
+*/
 mat-toolbar{
     position:fixed;
     top:0;
@@ -94,10 +95,12 @@ mat-sidenav-content{
     margin-left : 280px;
 }
 
+/*
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+    */
 
 .icoSmall {
     font-size: 15px;

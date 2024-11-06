@@ -5,6 +5,7 @@ import { authGuard } from './auth/auth.guard';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { AppComponent } from './app.component';
 import { ProjectComponent } from './pages/project/project.component';
+import { MainComponent } from './pages/main/main.component';
 
 export const routes: Routes = [
     {
@@ -20,6 +21,6 @@ export const routes: Routes = [
         path: 'admin', component: AdminComponent, canActivate: [authGuard]
     },
     {
-        path: 'main', component: AppComponent, canActivate: [authGuard]
+        path: 'main', component: MainComponent, canActivate: [authGuard]
     }
 ];

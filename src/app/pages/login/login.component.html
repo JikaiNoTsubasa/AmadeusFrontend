@@ -1,63 +1,27 @@
-<!--<div class="login-card">
-
-    <div class="card-title">
-        <h1>Login</h1>
-    </div>
-    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <input name="login" type="email" formControlName="login" placeholder="Email">
-        <input type="password" formControlName="password" placeholder="Password">
-        <button>Submit</button>
-    </form>
-
-</div>-->
-<!--
-<div class="main-div">
-    <span>
-        <span>
-            <span>Login</span>
-        </span>
-        <span>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <span [style.width.px]=327>
-                    <span>Email</span>
-                    <input name="login" type="email" formControlName="login" placeholder="Email">
-                </span><br/>
-                <span [style.width.px]=327>
-                    <span>Password</span>
-                    <input type="password" formControlName="password" placeholder="Password">
-                </span>
-                <br/>
-                
-                <button mat-flat-button>Submit</button>
-            </form>
-        </span>
-    </span>
-</div>-->
 <div class="main-div">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <p-card header="Amadeus" subheader="Login">
-            <div class="flex align-items-center gap-3 mb-3">
-                <p-inputGroup>
-                    <p-inputGroupAddon>
-                        <i class="pi pi-at"></i>
-                    </p-inputGroupAddon>
-                    <input pInputText id="email" name="login" type="email" formControlName="login" placeholder="Email">
-                </p-inputGroup>
-
-            </div>
-
-            <div class="flex align-items-center gap-3 mb-5">
-                <p-password [toggleMask]="true" formControlName="password"></p-password>
-
-            </div>
+        <p-card header="Amadeus" subheader="Login" [style]="{ width: '25rem' }">
             
-                <!--<input pInputText id="password" type="password" formControlName="password">-->
+            <p-inputGroup>
+                <p-inputGroupAddon>
+                    <i class="pi pi-at"></i>
+                </p-inputGroupAddon>
+                <input pInputText id="email" name="login" type="email" formControlName="login" placeholder="Email" class="w-full" [autofocus]="true">
+            </p-inputGroup>
+            <br/>
+            <p-inputGroup>
+                <p-inputGroupAddon>
+                    <i class="pi pi-lock"></i>
+                </p-inputGroupAddon>
+                <input pInputText id="password" name="password" type="password" formControlName="password" class="w-full">
+            </p-inputGroup>
 
             <ng-template pTemplate="footer">
                 <div class="flex justify-content-end gap-2">
                     <p-button type="submit" label="Login" icon="pi pi-play" iconPos="right" [disabled]="!loginForm.valid"></p-button>
                 </div>
             </ng-template>
+        
         </p-card>
     </form>
 </div>
