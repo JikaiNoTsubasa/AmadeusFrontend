@@ -2,16 +2,17 @@ import { Component, inject, Input } from '@angular/core';
 import { Unit } from '../../Models/Unit';
 import { AmaService } from '../../services/AmaService';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { StatusColorPipe } from "../../pipe/status-color.pipe";
 import { PanelModule } from 'primeng/panel';
 import { MenuModule } from 'primeng/menu';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  //imports: [CommonModule, StatusColorPipe, PanelModule, MenuModule ],
-  imports: [CommonModule ],
+  imports: [CommonModule, RouterModule, StatusColorPipe, PanelModule, MenuModule, ProgressSpinnerModule ],
+  //imports: [CommonModule, RouterModule ],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'
 })

@@ -1,17 +1,23 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidemenuComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Amadeus';
 
+  constructor(private primengConfig: PrimeNGConfig) {}
+
+  ngOnInit() {
+      this.primengConfig.ripple = true;
+  }
   /*
   appName = "Amadeus";
   @ViewChild('mysidenav')

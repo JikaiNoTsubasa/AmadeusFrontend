@@ -11,7 +11,7 @@
                             <span class="block p-3 text-gray-600">UNITS</span>
                         </li>
                         <li *ngFor="let unit of units">
-                            <a pripple class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round hover:bg-gray-800 text-gray-300 hover:text-white transition-duration-150 transition-colors">
+                            <a href="unit/{{unit.id}}" pripple style="text-decoration: none;" class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round hover:bg-gray-800 text-gray-300 hover:text-white transition-duration-150 transition-colors">
                                 <i class="pi {{unit.icon ?? 'pi-home'}} mr-2"></i>
                                 <span class="font-medium">{{unit.name}}</span>
                                 <span class="p-ink"></span>
@@ -62,8 +62,31 @@
                 </ul>
             </div>
             <div class="p-5 flex flex-column flex-auto">
-                <div class="border-2 border-dashed surface-border border-round surface-section flex-auto">
-                    This is content
+                <div class="flex-auto"> <!-- border-2 border-dashed surface-border border-round surface-section -->
+                    <!-- Content goes here-->
+                    <div *ngIf="loading">
+                        <p-progressSpinner></p-progressSpinner>
+                    </div>
+                    <div *ngIf="selectedUnit != null">
+                        <p-panel [toggleable]="true" class="surface-ground">
+                            <ng-template pTemplate="header">
+                                <span class="font-bold">{{selectedUnit?.name}}</span>
+                            </ng-template>
+                            <ng-template pTemplate="icons">
+                                <button class="p-panel-header-icon p-link mr-2" (click)="menu.toggle($event)">
+                                    <span class="pi pi-cog"></span>
+                                </button>
+                                <p-menu #menu id="config_menu"  [popup]="true" />
+                            </ng-template>
+                            <p class="m-0">
+                                <span class="date-creation">{{selectedUnit.creationDate | date:'dd/MM/yyyy'}}</span><br/>
+                                <span class="{{selectedUnit.status.name | statusColor}}">{{selectedUnit.status.name}}</span>
+                                <br/><br/>
+                                <span class="break-line"></span>
+                                <p>Click on the element below to open the side navigation menu, and push this content to the right. Or test</p>
+                            
+                        </p-panel>
+                    </div>
                 </div>
             </div>
         </div>
