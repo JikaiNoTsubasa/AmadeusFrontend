@@ -9,7 +9,8 @@ import { Project } from '../Models/Project';
   })
   export class AmaService {
 
-    host = "http://localhost/amadeus-back";
+    //host = "http://localhost/amadeus-back";
+    host = "http://localhost:8899";
   
     constructor(private http: HttpClient) {}
   

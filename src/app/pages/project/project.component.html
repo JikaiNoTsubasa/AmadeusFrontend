@@ -1,13 +1,114 @@
-<!--<h1>Unit: {{ unit?.name }}</h1>-->
-<div *ngIf="loading">
-    <img src="spinner.gif" />
+<div class="block-content">
+    <div class="min-h-screen flex relative lg:static surface-ground">
+        <div id="app-sidebar-3" class="bg-gray-900 h-screen hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 border-gray-800 select-none" style="width: 280px;">
+            <div class="flex flex-column h-full">
+                <div class="flex align-items-center px-5 flex-shrink-0 p-5">
+                    <img src="amadeus.png" style="width: 40px; height: 40px;"><span class="font-medium ml-2 text-gray-300">Amadeus</span>
+                </div>
+                <div class="overflow-y-auto">
+                    <ul class="list-none p-3 m-0">
+                        <li>
+                            <span class="block p-3 text-gray-600">UNITS</span>
+                        </li>
+                        <li *ngFor="let unit of units">
+                            <a pripple class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round hover:bg-gray-800 text-gray-300 hover:text-white transition-duration-150 transition-colors">
+                                <i class="pi {{unit.icon ?? 'pi-home'}} mr-2"></i>
+                                <span class="font-medium">{{unit.name}}</span>
+                                <span class="p-ink"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list-none p-3 m-0">
+                        <li>
+                            <span class="block p-3 text-gray-600">APPLICATION</span>
+                        </li>
+                        <li>
+                            <a pripple class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round hover:bg-gray-800 text-gray-300 hover:text-white transition-duration-150 transition-colors">
+                                <i class="pi pi-cog mr-2"></i>
+                                <span class="font-medium">Settings</span>
+                                <span class="p-ink"></span>
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-auto">
+                    <hr class="mb-3 mx-3 border-top-1 border-none border-gray-800">
+                    <a pripple class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round hover:bg-gray-800 text-gray-300 hover:text-white transition-duration-150 transition-colors">
+                        <img src="https://primefaces.org/cdn/primeng/images/avatar/amyelsner.png" class="mr-2" style="width: 28px; height: 28px;">
+                        <span class="font-medium">Stéphane</span>
+                        <span class="p-ink"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="min-h-screen flex flex-column relative flex-auto">
+            <div class="flex justify-content-between align-items-center px-5 surface-0 border-bottom-1 surface-border relative lg:static">
+                <div class="flex">
+                    <a pripple pstyleclass="#app-sidebar-3" enterclass="hidden" enteractiveclass="fadeinleft" leavetoclass="hidden" leaveactiveclass="fadeoutleft" class="p-ripple p-element cursor-pointer inline-flex align-items-center justify-content-center lg:hidden text-700 mr-3">
+                        <i class="pi pi-bars text-4x1"></i>
+                        <span class="p-ink"></span>
+                    </a>
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText placeholder="Search" class="p-inputtext p-component p-element border-none w-10rem sm:w-20rem">
+                    </span>
+                </div>
+                <a pripple="" pstyleclass="@next" enterclass="hidden" enteractiveclass="fadein" leavetoclass="hidden" leaveactiveclass="fadeout" class="p-ripple p-element cursor-pointer block lg:hidden text-700"><i class="pi pi-ellipsis-v text-2xl"></i><span class="p-ink"></span></a>
+                <ul class="list-none p-0 m-0 hidden lg:flex lg:align-items-center select-none lg:flex-row surface-section border-1 lg:border-none surface-border right-0 top-100 z-1 shadow-2 lg:shadow-none absolute lg:static">
+                    <li><a pripple="" class="p-ripple p-element flex p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-duration-150 transition-colors"><i class="pi pi-inbox text-base lg:text-2xl mr-2 lg:mr-0"></i><span class="block lg:hidden font-medium">Inbox</span><span class="p-ink"></span></a></li>
+                    <li><a pripple="" class="p-ripple p-element flex p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-duration-150 transition-colors"><i pbadge="" severity="danger" class="p-element pi pi-bell text-base lg:text-2xl mr-2 lg:mr-0 p-overlay-badge"><span id="pr_id_3_badge" class="p-badge p-component p-badge-danger p-badge-dot"></span></i><span class="block lg:hidden font-medium">Notifications</span><span class="p-ink"></span></a></li>
+                    <li><a pripple="" class="p-ripple p-element flex p-3 lg:px-3 lg:py-2 align-items-center hover:surface-100 font-medium border-round cursor-pointer transition-duration-150 transition-colors"><img src="https://primefaces.org/cdn/primeng/images/avatar/amyelsner.png" class="mr-3 lg:mr-0" style="width: 32px; height: 32px;"><div class="block lg:hidden"><div class="text-900 font-medium">Josephine Lillard</div><span class="text-600 font-medium text-sm">Marketing Specialist</span></div><span class="p-ink"></span></a></li>
+                </ul>
+            </div>
+            <div class="p-5 flex flex-column flex-auto">
+                <div class="border-2 border-dashed surface-border border-round surface-section flex-auto">
+                    This is content
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
 </div>
 
-<div *ngIf="selectedUnit != null">
-    <h2>{{selectedUnit.name}}</h2>
-    <span class="date-creation">{{selectedUnit.creationDate | date:'dd/MM/yyyy'}}</span><br/>
-    <span class="{{selectedUnit.status.name | statusColor}}">{{selectedUnit.status.name}}</span>
-    <br/><br/>
-    <span class="break-line"></span>
-    <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+
+<!-- https://blocks.primeng.org/#/application/sidebarlayout -->
+<!--<h1>Unit: {{ unit?.name }}</h1>-->
+
+<!--
+<div class="sb-page">
+    <div class="sb-left-menu">
+        left menu
+    </div>
+    <div class="sb-content">
+
+        <div *ngIf="loading">
+            <img src="spinner.gif" />
+        </div>
+        
+        <div *ngIf="selectedUnit != null">
+            <p-panel [toggleable]="true" >
+                <ng-template pTemplate="header">
+                    <span class="font-bold">{{selectedUnit?.name}}</span>
+                </ng-template>
+                <ng-template pTemplate="icons">
+                    <button class="p-panel-header-icon p-link mr-2" (click)="menu.toggle($event)">
+                        <span class="pi pi-cog"></span>
+                    </button>
+                    <p-menu #menu id="config_menu"  [popup]="true" />
+                </ng-template>
+                <p class="m-0">
+                    <span class="date-creation">{{selectedUnit.creationDate | date:'dd/MM/yyyy'}}</span><br/>
+                    <span class="{{selectedUnit.status.name | statusColor}}">{{selectedUnit.status.name}}</span>
+                    <br/><br/>
+                    <span class="break-line"></span>
+                    <p>Click on the element below to open the side navigation menu, and push this content to the right. Or test</p>
+                
+            </p-panel>
+        </div>
+
+    </div>
 </div>
+-->
+
