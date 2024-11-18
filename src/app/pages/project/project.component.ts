@@ -7,11 +7,12 @@ import { StatusColorPipe } from "../../pipe/status-color.pipe";
 import { PanelModule } from 'primeng/panel';
 import { MenuModule } from 'primeng/menu';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ChipModule } from 'primeng/chip';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule, RouterModule, StatusColorPipe, PanelModule, MenuModule, ProgressSpinnerModule ],
+  imports: [CommonModule, RouterModule, StatusColorPipe, PanelModule, MenuModule, ProgressSpinnerModule, ChipModule ],
   //imports: [CommonModule, RouterModule ],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'
