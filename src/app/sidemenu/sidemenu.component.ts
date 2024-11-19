@@ -9,7 +9,7 @@ import { ProjectComponent } from "../pages/project/project.component";
 @Component({
   selector: 'app-sidemenu',
   standalone: true,
-  imports: [ CommonModule, RouterModule, ProjectComponent],
+  imports: [ CommonModule, RouterModule],
   templateUrl: './sidemenu.component.html',
   styleUrl: './sidemenu.component.scss'
 })
@@ -17,19 +17,9 @@ export class SidemenuComponent {
 
   amaService = inject(AmaService);
   authService = inject(AuthService);
-  router = inject(Router);
-
-  appName = "Amadeus";
-  @ViewChild('mysidenav')
-  public sidenav: ElementRef;
-  @ViewChild('mymain') 
-  mainref : ElementRef;
-
-  selectedUnit : Unit = null;
-
+  
   units: Unit[] = [];
-
-  sidebarOpened = true;
+  loading = true;
 
   ngOnInit(){
     this.getAllUnits();
@@ -49,29 +39,4 @@ export class SidemenuComponent {
   });
   }
 
-  openNav(){
-    this.sidenav.nativeElement.style.width = "250px";
-    this.mainref.nativeElement.style.marginLeft = "250px";
-  }
-
-  closeNav() {
-    this.sidenav.nativeElement.style.width = "0";
-    this.mainref.nativeElement.style.marginLeft = "0";
-  }
-
-  toggleNav() {
-    if (this.sidebarOpened){
-      this.closeNav();
-      //console.log("closing");
-      this.sidebarOpened = false;
-    }else{
-      this.openNav();
-      //console.log("opening");
-      this.sidebarOpened = true;
-    }
-  }
-
-  onClickUnit(unit: Unit){
-    this.selectedUnit = unit;
-  }
 }

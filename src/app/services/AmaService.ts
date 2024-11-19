@@ -13,6 +13,10 @@ import { Project } from '../Models/Project';
     host = "http://localhost:8899";
   
     constructor(private http: HttpClient) {}
+
+    getFirstUnit(): Observable<Unit> {
+      return this.http.get<Unit>(this.host + "/unit/first");
+    }
   
     getAllUnits(): Observable<Unit[]> {
       return this.http.get<Unit[]>(this.host + "/unit");

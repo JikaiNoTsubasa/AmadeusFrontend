@@ -11,11 +11,13 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SidemenuComponent } from '../../sidemenu/sidemenu.component';
+import { TopmenuComponent } from '../../comps/topmenu/topmenu.component';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule, StatusColorPipe, ProgressSpinnerModule, ChipModule, CardModule, ToolbarModule, ButtonModule, DialogModule, ReactiveFormsModule ],
+  imports: [CommonModule, ProgressSpinnerModule, ChipModule, CardModule, ToolbarModule, ButtonModule, DialogModule, ReactiveFormsModule, SidemenuComponent, TopmenuComponent ],
   //imports: [CommonModule, RouterModule ],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'
@@ -23,7 +25,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class ProjectComponent {
 
   selectedUnit : Unit = null;
-  units: Unit[] = [];
   loading = true;
 
   amaService = inject(AmaService);
@@ -37,7 +38,7 @@ export class ProjectComponent {
 
 
   ngOnInit(){
-    const id =this.route.snapshot.params['id'];
+    const id = this.route.snapshot.params['id'];
     this.amaService.getUnit(id).subscribe({
       next:(data) => {
         this.selectedUnit = data;
@@ -47,18 +48,6 @@ export class ProjectComponent {
         },
       complete:() => {
         this.loading = false;
-        //console.log('complete');
-        }
-    });
-
-    this.amaService.getAllUnits().subscribe({
-      next:(data) => {
-        this.units = data;
-        }, 
-      error:(error)=>{
-        console.log(error);
-        },
-      complete:() => {
         //console.log('complete');
         }
     });
