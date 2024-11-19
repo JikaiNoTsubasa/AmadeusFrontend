@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { AmaService } from '../services/AmaService';
+import { User } from '../Models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class AuthService {
 
   isLoggedIn() {
     return sessionStorage.getItem('authUser') !== null;
+  }
+
+  getAuthUser() :User {
+    return JSON.parse(sessionStorage.getItem('authUser')) as User;
   }
 }

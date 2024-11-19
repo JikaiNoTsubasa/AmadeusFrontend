@@ -6,6 +6,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { AppComponent } from './app.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { MainComponent } from './pages/main/main.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 export const routes: Routes = [
     {
@@ -13,6 +14,9 @@ export const routes: Routes = [
     },
     {
         path: 'login', component: LoginComponent
+    },
+    {
+        path: 'logout', component: LogoutComponent
     },
     {
         path: 'unit/:id', component: ProjectComponent

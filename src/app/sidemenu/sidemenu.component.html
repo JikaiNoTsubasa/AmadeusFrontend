@@ -44,15 +44,21 @@
                         <span class="font-medium">Settings</span>
                         <span class="p-ink"></span>
                     </a>
-
+                </li>
+                <li>
+                    <a href="logout" style="text-decoration: none;" pripple class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round hover:bg-gray-800 text-gray-300 hover:text-white transition-duration-150 transition-colors">
+                        <i class="pi pi-sign-out mr-2"></i>
+                        <span class="font-medium">Logout</span>
+                        <span class="p-ink"></span>
+                    </a>
                 </li>
             </ul>
         </div>
         <div class="mt-auto">
             <hr class="mb-3 mx-3 border-top-1 border-none border-gray-800">
             <a pripple class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round hover:bg-gray-800 text-gray-300 hover:text-white transition-duration-150 transition-colors">
-                <img src="https://primefaces.org/cdn/primeng/images/avatar/amyelsner.png" class="mr-2" style="width: 28px; height: 28px;">
-                <span class="font-medium">Stéphane</span>
+                <img src="{{ user.avatarPath }}" class="mr-2" style="width: 28px; height: 28px;">
+                <span class="font-medium">{{ user.displayName }}</span>
                 <span class="p-ink"></span>
             </a>
         </div>

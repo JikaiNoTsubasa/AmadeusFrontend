@@ -5,6 +5,7 @@ import { Unit } from '../Models/Unit';
 import { AuthService } from '../auth/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { ProjectComponent } from "../pages/project/project.component";
+import { User } from '../Models/User';
 
 @Component({
   selector: 'app-sidemenu',
@@ -21,7 +22,10 @@ export class SidemenuComponent {
   units: Unit[] = [];
   loading = true;
 
+  user : User;
+
   ngOnInit(){
+    this.getCurrentUser();
     this.getAllUnits();
   }
 
@@ -37,6 +41,10 @@ export class SidemenuComponent {
         //console.log('complete');
         }
   });
+  }
+
+  getCurrentUser(){
+    this.user = this.authService.getAuthUser();
   }
 
 }

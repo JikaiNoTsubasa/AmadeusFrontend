@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Unit } from '../Models/Unit';
 import { Project } from '../Models/Project';
+import { User } from '../Models/User';
 
 @Injectable({
     providedIn: 'root',
@@ -28,5 +29,9 @@ import { Project } from '../Models/Project';
 
     getAllProjects(): Observable<Project[]> {
       return this.http.get<Project[]>(this.host + "/project");
+    }
+
+    getUser(id: number): Observable<User> {
+      return this.http.get<User>(this.host + "/user/" + id);
     }
   }
