@@ -27,10 +27,10 @@ import { MenubarModule } from 'primeng/menubar';
   selector: 'app-project',
   standalone: true,
   imports: [CommonModule, ProgressSpinnerModule, ChipModule, CardModule, ToolbarModule, ButtonModule, DialogModule, ReactiveFormsModule, SidemenuComponent, TopmenuComponent, SidebarModule, InputTextModule, DropdownModule, MenuModule, MenubarModule ],
-  templateUrl: './project.component.html',
-  styleUrl: './project.component.scss'
+  templateUrl: './unit.component.html',
+  styleUrl: './unit.component.scss'
 })
-export class ProjectComponent {
+export class UnitComponent {
 
   selectedUnit : Unit = null;
   projects : Project[] = [];
@@ -75,7 +75,17 @@ export class ProjectComponent {
         },
       complete:() => {
         this.loading = false;
-        //console.log('complete');
+        this.amaService.getProjectsForUnit(this.selectedUnit.id).subscribe({
+          next:(data) => {
+            this.projects = data;
+            }, 
+          error:(error)=>{
+            console.log(error);
+            },
+          complete:() => {
+            //console.log('complete');
+            }
+          });
         }
     });
 
@@ -91,17 +101,7 @@ export class ProjectComponent {
         }
     });
 
-    this.amaService.getAllProjects().subscribe({
-      next:(data) => {
-        this.projects = data;
-        }, 
-      error:(error)=>{
-        console.log(error);
-        },
-      complete:() => {
-        //console.log('complete');
-        }
-    })
+    
   }
 
   ngOnChanges(){

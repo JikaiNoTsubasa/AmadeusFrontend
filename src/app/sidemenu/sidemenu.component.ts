@@ -4,7 +4,6 @@ import { AmaService } from '../services/AmaService';
 import { Unit } from '../Models/Unit';
 import { AuthService } from '../auth/auth.service';
 import { Router, RouterModule } from '@angular/router';
-import { ProjectComponent } from "../pages/project/project.component";
 import { User } from '../Models/User';
 
 @Component({

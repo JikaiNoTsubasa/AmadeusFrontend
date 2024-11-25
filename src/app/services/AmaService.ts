@@ -32,6 +32,9 @@ import { Status } from '../Models/Status';
     getAllProjects(): Observable<Project[]> {
       return this.http.get<Project[]>(this.host + "/project");
     }
+    getProjectsForUnit(id: number): Observable<Project[]> {
+      return this.http.get<Project[]>(this.host + "/project/unit/" + id);
+    }
 
     getAllStatuses(): Observable<Status[]> {
       return this.http.get<Status[]>(this.host + "/status");
