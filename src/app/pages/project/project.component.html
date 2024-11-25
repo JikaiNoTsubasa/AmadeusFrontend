@@ -1,0 +1,54 @@
+<div class="block-content">
+    <div class="min-h-screen flex relative lg:static surface-ground">
+        <!-- Side Menu -->
+        <app-sidemenu></app-sidemenu>
+        <div class="min-h-screen flex flex-column relative flex-auto">
+            <!-- Top menu -->
+            <app-topmenu></app-topmenu>
+            <div class="p-5 flex flex-column flex-auto">
+                <div class="flex-auto"> <!-- border-2 border-dashed surface-border border-round surface-section -->
+                    <!-- Content goes here-->
+                    <div *ngIf="loading">
+                        <p-progressSpinner></p-progressSpinner>
+                    </div>
+                    <div *ngIf="selectedProject != null">
+                        <p-card header="{{selectedProject?.name}}" subheader="{{selectedProject.creationDate | date:'dd/MM/yyyy'}}">
+                            <p-chip label="{{selectedProject.status.name}}"></p-chip>
+                        </p-card>
+                        <div class="grid mt-2">
+                            <div class="col-9">
+                                <p-card header="Tasks">
+                                    <ul class="list-none p-0 m-0">
+                                        <li *ngFor="let task of tasks" class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                                            <div class="flex">
+                                                <i class="pi pi-folder mr-3"></i>
+                                                <div class="mr-0 md:mr-8">
+                                                    <span class="block text-900 font-medium mb-1"><a href="project/{{task.id}}" style="text-decoration: none;" class="cursor-pointer text-primary">{{ task.name}}</a></span>
+                                                    <div class="text-600">{{task.creationDate | date:'dd/MM/yyyy'}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 md:mt-0 flex flex-nowrap">
+                                                <p-button icon="pi pi-arrow-up-right"></p-button>
+                                            </div>
+                                            
+                                        </li>
+
+                                    </ul>
+                                </p-card>
+                            </div>
+                            <div class="col-3">
+                                <p-menu [model]="projectMenuItems" styleClass="w-full border-none" />
+                            </div>
+                        </div>
+                        
+
+                        <!-- Dialogs -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>

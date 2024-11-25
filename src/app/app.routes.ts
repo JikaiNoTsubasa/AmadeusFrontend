@@ -5,6 +5,7 @@ import { authGuard } from './auth/auth.guard';
 import { UnitComponent } from './pages/unit/unit.component';
 import { MainComponent } from './pages/main/main.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { ProjectComponent } from './pages/project/project.component';
 
 export const routes: Routes = [
     {
@@ -17,7 +18,10 @@ export const routes: Routes = [
         path: 'logout', component: LogoutComponent
     },
     {
-        path: 'unit/:id', component: UnitComponent
+        path: 'unit/:id', component: UnitComponent, canActivate: [authGuard]
+    },
+    {
+        path: 'project/:id', component: ProjectComponent, canActivate: [authGuard]
     },
     {
         path: 'admin', component: AdminComponent, canActivate: [authGuard]
