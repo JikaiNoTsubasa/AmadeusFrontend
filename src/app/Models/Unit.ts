@@ -1,3 +1,4 @@
+import { Project } from "./Project";
 import { Status } from "./Status";
 
 export interface Unit{
@@ -6,4 +7,5 @@ export interface Unit{
     icon: string;
     status: Status;
     creationDate: Date;
+    projects: Project[]
 }

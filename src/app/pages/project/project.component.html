@@ -15,18 +15,78 @@
                         <p-card header="{{selectedUnit?.name}}" subheader="{{selectedUnit.creationDate | date:'dd/MM/yyyy'}}">
                             <p-chip label="{{selectedUnit.status.name}}"></p-chip>
                         </p-card>
-                        <p-toolbar class="m-2">
-                            <div class="p-toolbar-group-start">
-                                <p-button icon="pi pi-plus" class="mr-2"></p-button>
-                                <p-button icon="pi pi-pencil" class="mr-2" (onClick)="showEditUnitDialog()"></p-button>
+                        <div class="grid mt-2">
+                            <div class="col-9">
+                                <p-card header="Projects">
+                                    <ul class="list-none p-0 m-0">
+                                        <li *ngFor="let project of projects" class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                                            <div class="flex">
+                                                <i class="pi pi-folder mr-3"></i>
+                                                <div class="mr-0 md:mr-8">
+                                                    <span class="block text-900 font-medium mb-1"><a href="project/{{project.id}}" style="text-decoration: none;" class="cursor-pointer text-primary">{{ project.name}}</a></span>
+                                                    <div class="text-600">{{project.creationDate | date:'dd/MM/yyyy'}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 md:mt-0 flex flex-nowrap">
+                                                <p-button icon="pi pi-arrow-up-right" (onClick)="openProject(project.id)"></p-button>
+                                            </div>
+                                            
+                                        </li>
+
+                                    </ul>
+                                </p-card>
                             </div>
-                        </p-toolbar>
+                            <div class="col-3">
+                                <p-menu [model]="projectMenuItems" styleClass="w-full border-none" />
+                            </div>
+                        </div>
+                        
+
+                        <!-- Dialogs -->
+                        <p-sidebar [(visible)]="createProjectDialogVisible" position="right" styleClass="w-6">
+                            <ng-template pTemplate="header">
+                                <span class="font-semibold text-xl">Create Project</span>
+                            </ng-template>
+                            <span class="p-text-secondary block mb-5">Create project for unit: {{selectedUnit.name}}</span>
+                            <form [formGroup]="projectCreateForm" (ngSubmit)="submitProjectCreate()">
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="projectName" class="font-semibold w-6rem">Name</label>
+                                    <input pInputText id="projectName" formControlName="projectName" class="flex-auto" [required]="true"/>
+                                </div>
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="projectdesc" class="font-semibold w-6rem">Description</label>
+                                    <textarea 
+                                        id="projectdesc"
+                                        rows="5" 
+                                        cols="30"  
+                                        pInputTextarea 
+                                        formControlName="projectDesc" class="flex-auto">
+                                    </textarea>
+                                </div>
+                                <!--
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="projectstatus" class="font-semibold w-6rem">Status</label>
+                                    <p-dropdown 
+                                        formControlName="projectStatus" 
+                                        [options]="statuses"
+                                        optionLabel="name"
+                                        placeholder="Select a status" />
+                                </div>
+                            -->
+                                <div class="flex justify-content-end gap-2">
+                                    <p-button label="Cancel" severity="secondary" (onClick)="createProjectDialogVisible = false" />
+                                    <p-button type="submit" label="Save" />
+                                </div>
+                            </form>
+                        </p-sidebar>
+
+
                         <p-dialog header="Edit Unit" [modal]="true" [(visible)]="editUnitDialogVisible" [style]="{ width: '25rem' }">
                             <form [formGroup]="unitUpdateForm" (ngSubmit)="submitUnitUpdate()">
                                 <span class="p-text-secondary block mb-5">Update Unit information.</span>
                                 <div class="flex align-items-center gap-3 mb-3">
                                     <label for="unitname" class="font-semibold w-6rem">Name</label>
-                                    <input pInputText id="unitname" class="flex-auto" />
+                                    <input pInputText id="unitname" formControlName="unitName" class="flex-auto" />
                                 </div>
                                 <div class="flex justify-content-end gap-2">
                                     <p-button label="Cancel" severity="secondary" (onClick)="editUnitDialogVisible = false" />

@@ -34,6 +34,11 @@ html, body { height: 100%; }
     display: inline-block;
 }
 */
+
+.borderless{
+    border: none;
+}
+
 .chip{
     height: 25px;
     line-height: 25px;
@@ -43,7 +48,7 @@ html, body { height: 100%; }
     display: inline-block;
 }
     
-
+/*
 .chip-basic {
     color: #F98A90;
     background-color: rgba($color: #F98A90, $alpha: 0.1);
@@ -68,7 +73,7 @@ html, body { height: 100%; }
     color: #F98A90;
     background-color: rgba($color: #F98A90, $alpha: 0.1);
 }
-/*
+
 .break-line {
     display: block;
     width: 100%;
