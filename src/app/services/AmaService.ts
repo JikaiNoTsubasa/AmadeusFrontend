@@ -31,6 +31,10 @@ import { Task } from '../Models/Task';
       return this.http.get<Unit>(this.host + "/unit/" + id);
     }
 
+    getUnitByProject(id: number): Observable<Unit> {
+      return this.http.get<Unit>(this.host + "/unit/project/" + id);
+    }
+
     // Projects
     getAllProjects(): Observable<Project[]> {
       return this.http.get<Project[]>(this.host + "/project");

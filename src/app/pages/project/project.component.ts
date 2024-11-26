@@ -17,32 +17,41 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { MenuModule } from 'primeng/menu';
 import { Task } from '../../Models/Task';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
+import { DividerModule } from 'primeng/divider';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { Unit } from '../../Models/Unit';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [ CommonModule, ProgressSpinnerModule, ChipModule, CardModule, ToolbarModule, ButtonModule, DialogModule, ReactiveFormsModule, SidemenuComponent, TopmenuComponent, SidebarModule, InputTextModule, DropdownModule, MenuModule],
+  imports: [ CommonModule, ProgressSpinnerModule, ChipModule, CardModule, ToolbarModule, ButtonModule, DialogModule, ReactiveFormsModule, SidemenuComponent, TopmenuComponent, SidebarModule, InputTextModule, DropdownModule, MenuModule, DividerModule, BreadcrumbModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'
 })
 export class ProjectComponent {
 
   selectedProject : Project;
+  unit: Unit;
   tasks: Task[] = [];
   amaService = inject(AmaService);
   route = inject(ActivatedRoute);
+  messageService = inject(MessageService);
 
   loading = true;
 
   // Project Menu
   projectMenuItems : MenuItem[] = [
     {label: 'Actions', items: [
-      {label: 'Create Project', icon: 'pi pi-plus'},
-      {label: 'Edit Unit', icon: 'pi pi-pencil'}
+      {label: 'Create Task', icon: 'pi pi-plus'},
+      {label: 'Edit Project', icon: 'pi pi-pencil'}
     ]},
     
   ];
+
+  // Breadcrump
+  breadcrumbItems: MenuItem[] = [];
+  homeItem: MenuItem = {icon: 'pi pi-home', url: '/'};
   
   ngOnInit(){
     const id = this.route.snapshot.params['id'];
@@ -56,6 +65,26 @@ export class ProjectComponent {
         },
       complete:() => {
         this.loading = false;
+
+        // Update unit for this project
+        this.amaService.getUnitByProject(this.selectedProject.id).subscribe({
+          next:(data) => {
+            this.unit = data;
+            }, 
+          error:(error)=>{
+            console.log(error);
+            },
+          complete:() => {
+            // Update breadcrump
+            this.breadcrumbItems = [
+              {label: this.unit.name, url: '/unit/' + this.unit.id}, 
+              {label: this.selectedProject.name, url: '/project/' + this.selectedProject.id}
+            ];
+            this.messageService.add({severity:'success', summary: 'Unit loaded', detail: this.unit.name});
+            }
+          });
+
+        // Update tasks list
         this.amaService.getTasksForProject(this.selectedProject.id).subscribe({
           next:(data) => {
             this.tasks = data;

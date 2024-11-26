@@ -1,6 +1,7 @@
 import { Category } from "./Category";
 import { Status } from "./Status";
 import { Task } from "./Task";
+import { Unit } from "./Unit";
 
 export interface Project {
     id: number;

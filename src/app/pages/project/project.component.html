@@ -12,8 +12,13 @@
                         <p-progressSpinner></p-progressSpinner>
                     </div>
                     <div *ngIf="selectedProject != null">
+                        <p-breadcrumb 
+                            class="max-w-full mb-4" 
+                            [style]="{background: 'none'}"
+                            [model]="breadcrumbItems" 
+                            [home]="homeItem" />
                         <p-card header="{{selectedProject?.name}}" subheader="{{selectedProject.creationDate | date:'dd/MM/yyyy'}}">
-                            <p-chip label="{{selectedProject.status.name}}"></p-chip>
+                            <p-chip styleClass="fadein animation-duration-1000 mr-2" label="{{selectedProject.status.name}}"></p-chip><p-chip styleClass="fadein animation-duration-1000 mr-2" *ngFor="let cat of selectedProject.categories" label="{{cat.name}}"></p-chip>
                         </p-card>
                         <div class="grid mt-2">
                             <div class="col-9">
