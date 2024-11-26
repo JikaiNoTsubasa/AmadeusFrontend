@@ -2,7 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { Unit } from '../../Models/Unit';
 import { AmaService } from '../../services/AmaService';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { StatusColorPipe } from "../../pipe/status-color.pipe";
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ChipModule } from 'primeng/chip';
@@ -37,7 +37,8 @@ export class UnitComponent {
   loading = true;
 
   amaService = inject(AmaService);
-  route = inject(ActivatedRoute);
+  activatedRoute = inject(ActivatedRoute);
+  router = inject(Router);
 
   statuses : Status[] = [];
 
@@ -65,7 +66,7 @@ export class UnitComponent {
 
 
   ngOnInit(){
-    const id = this.route.snapshot.params['id'];
+    const id = this.activatedRoute.snapshot.params['id'];
     this.amaService.getUnit(id).subscribe({
       next:(data) => {
         this.selectedUnit = data;
@@ -146,6 +147,6 @@ export class UnitComponent {
   }
 
   openProject(prjId:number){
-    
+    this.router.navigate(['/project/' + prjId]);
   }
 }
