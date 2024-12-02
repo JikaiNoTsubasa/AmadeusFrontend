@@ -1,1 +1,72 @@
-<p>task works!</p>
+<div class="block-content">
+    <div class="min-h-screen flex relative lg:static surface-ground">
+        <!-- Side Menu -->
+        <app-sidemenu></app-sidemenu>
+        <div class="min-h-screen flex flex-column relative flex-auto">
+            <!-- Top menu -->
+            <app-topmenu></app-topmenu>
+            <div class="p-5 flex flex-column flex-auto">
+                <div class="flex-auto"> <!-- border-2 border-dashed surface-border border-round surface-section -->
+                    <!-- Content goes here-->
+                    <div *ngIf="loading">
+                        <p-progressSpinner></p-progressSpinner>
+                    </div>
+                    <div *ngIf="currentTask != null">
+                        <p-breadcrumb 
+                            class="max-w-full mb-4" 
+                            [style]="{background: 'none'}"
+                            [model]="breadcrumbItems" 
+                            [home]="homeItem" />
+                        <p-card header="{{currentTask?.name}}" subheader="{{currentTask.creationDate | date:'dd/MM/yyyy'}}">
+                            <p-chip styleClass="fadein animation-duration-1000 mr-2" label="{{currentTask.status.name}}"></p-chip><p-chip styleClass="fadein animation-duration-1000 mr-2" *ngFor="let cat of currentTask.categories" label="{{cat.name}}"></p-chip>
+                            
+                        </p-card>
+                        <div class="grid mt-2">
+                            <div class="col-9">
+                                <p-card class="mt-2">
+                                    <p>{{ currentTask.content }}</p>
+                                </p-card>
+                            </div>
+                            
+                            <div class="col-3">
+                                <p-menu [model]="taskMenuItems" styleClass="w-full border-none" />
+                            </div>
+                        </div>
+                        
+
+                        <!-- Dialogs -->
+                        <!--<p-sidebar [(visible)]="createTaskDialogVisible" position="right" styleClass="w-6">
+                            <ng-template pTemplate="header">
+                                <span class="font-semibold text-xl">Create Task</span>
+                            </ng-template>
+                            <span class="p-text-secondary block mb-5">Create task for project: {{selectedProject.name}}</span>
+                            <form [formGroup]="taskCreateForm" (ngSubmit)="submitTaskCreate()">
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="taskName" class="font-semibold w-6rem">Name</label>
+                                    <input pInputText id="taskName" formControlName="taskName" class="flex-auto" [required]="true"/>
+                                </div>
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="taskContent" class="font-semibold w-6rem">Content</label>
+                                    <textarea 
+                                        id="taskContent"
+                                        rows="5" 
+                                        cols="30"  
+                                        pInputTextarea 
+                                        formControlName="taskContent" class="flex-auto">
+                                    </textarea>
+                                </div>
+                                <div class="flex justify-content-end gap-2">
+                                    <p-button label="Cancel" severity="secondary" (onClick)="createTaskDialogVisible = false" />
+                                    <p-button type="submit" label="Save" />
+                                </div>
+                            </form>
+                        </p-sidebar>-->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>

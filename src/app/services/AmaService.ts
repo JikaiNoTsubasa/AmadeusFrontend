@@ -8,6 +8,7 @@ import { RequestCreateProject } from '../Models/DTO/RequestCreateProject';
 import { Status } from '../Models/Status';
 import { Task } from '../Models/Task';
 import { RequestCreateTask } from '../Models/DTO/RequestCreateTask';
+import { RequestUpdateTask } from '../Models/DTO/RequestUpdateTask';
 
 @Injectable({
     providedIn: 'root',
@@ -58,8 +59,16 @@ import { RequestCreateTask } from '../Models/DTO/RequestCreateTask';
       return this.http.get<Task[]>(this.host + "/task/project/" + id);
     }
 
+    getTask(id: number): Observable<Task> {
+      return this.http.get<Task>(this.host + "/task/" + id);
+    }
+
     createTask(task: RequestCreateTask): Observable<Task>{
       return this.http.post<Task>(this.host + "/task", task);
+    }
+
+    updateTask(id: number, task: RequestUpdateTask): Observable<Task>{
+      return this.http.put<Task>(this.host + "/task/" + id, task);
     }
 
     // Status

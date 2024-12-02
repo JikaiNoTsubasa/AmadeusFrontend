@@ -6,6 +6,7 @@ import { UnitComponent } from './pages/unit/unit.component';
 import { MainComponent } from './pages/main/main.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { ProjectComponent } from './pages/project/project.component';
+import { TaskComponent } from './pages/task/task.component';
 
 export const routes: Routes = [
     {
@@ -22,6 +23,9 @@ export const routes: Routes = [
     },
     {
         path: 'project/:id', component: ProjectComponent, canActivate: [authGuard]
+    },
+    {
+        path: 'task/:id', component: TaskComponent, canActivate: [authGuard]
     },
     {
         path: 'admin', component: AdminComponent, canActivate: [authGuard]
