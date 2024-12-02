@@ -1,15 +1,7 @@
-import { Category } from "./Category";
-import { Status } from "./Status";
+import { Entity } from "./Entity";
 import { Task } from "./Task";
-import { Unit } from "./Unit";
 
-export interface Project {
-    id: number;
-    name: string;
-    icon: string;
+export interface Project extends Entity {
     description: string;
     tasks: Task[];
-    categories: Category[];
-    status: Status;
-    creationDate: Date;
 }

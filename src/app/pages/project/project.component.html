@@ -19,21 +19,23 @@
                             [home]="homeItem" />
                         <p-card header="{{selectedProject?.name}}" subheader="{{selectedProject.creationDate | date:'dd/MM/yyyy'}}">
                             <p-chip styleClass="fadein animation-duration-1000 mr-2" label="{{selectedProject.status.name}}"></p-chip><p-chip styleClass="fadein animation-duration-1000 mr-2" *ngFor="let cat of selectedProject.categories" label="{{cat.name}}"></p-chip>
+                            <p>{{ selectedProject.description }}</p>
                         </p-card>
                         <div class="grid mt-2">
                             <div class="col-9">
                                 <p-card header="Tasks">
                                     <ul class="list-none p-0 m-0">
-                                        <li *ngFor="let task of tasks" class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                                        <li *ngFor="let task of tasks" class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4 fadein animation-duration-1000">
                                             <div class="flex">
                                                 <i class="pi pi-folder mr-3"></i>
                                                 <div class="mr-0 md:mr-8">
-                                                    <span class="block text-900 font-medium mb-1"><a href="project/{{task.id}}" style="text-decoration: none;" class="cursor-pointer text-primary">{{ task.name}}</a></span>
+                                                    <span class="block text-900 font-medium mb-1"><a href="task/{{task.id}}" style="text-decoration: none;" class="cursor-pointer text-primary">{{ task.name}}</a></span>
                                                     <div class="text-600">{{task.creationDate | date:'dd/MM/yyyy'}}</div>
                                                 </div>
+                                                <p-chip label="{{task.status.name}}"></p-chip>
                                             </div>
                                             <div class="mt-2 md:mt-0 flex flex-nowrap">
-                                                <p-button icon="pi pi-arrow-up-right"></p-button>
+                                                <p-button icon="pi pi-arrow-up-right" (onClick)="openTask(task.id)"></p-button>
                                             </div>
                                             
                                         </li>
@@ -48,6 +50,32 @@
                         
 
                         <!-- Dialogs -->
+                        <p-sidebar [(visible)]="createTaskDialogVisible" position="right" styleClass="w-6">
+                            <ng-template pTemplate="header">
+                                <span class="font-semibold text-xl">Create Task</span>
+                            </ng-template>
+                            <span class="p-text-secondary block mb-5">Create task for project: {{selectedProject.name}}</span>
+                            <form [formGroup]="taskCreateForm" (ngSubmit)="submitTaskCreate()">
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="taskName" class="font-semibold w-6rem">Name</label>
+                                    <input pInputText id="taskName" formControlName="taskName" class="flex-auto" [required]="true"/>
+                                </div>
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="taskContent" class="font-semibold w-6rem">Content</label>
+                                    <textarea 
+                                        id="taskContent"
+                                        rows="5" 
+                                        cols="30"  
+                                        pInputTextarea 
+                                        formControlName="taskContent" class="flex-auto">
+                                    </textarea>
+                                </div>
+                                <div class="flex justify-content-end gap-2">
+                                    <p-button label="Cancel" severity="secondary" (onClick)="createTaskDialogVisible = false" />
+                                    <p-button type="submit" label="Save" />
+                                </div>
+                            </form>
+                        </p-sidebar>
                         
                     </div>
                 </div>
